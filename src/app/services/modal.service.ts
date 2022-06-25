@@ -19,7 +19,14 @@ export class ModalService {
     });
   }
 
-  isModalOpen(id: string) : boolean {
+  unRegister(id: string) {
+    const modalIndex = this.modals.findIndex((modal) => modal.id === id);
+    if (modalIndex !== -1) {
+      this.modals.splice(modalIndex, 1);
+    }
+  }
+
+  isModalOpen(id: string): boolean {
     return !!this.modals.find((modal) => modal.id === id)?.visible;
   }
 
